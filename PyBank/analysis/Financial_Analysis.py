@@ -9,6 +9,8 @@ count=0
 total=0
 avg=0
 diff=0
+curr=0
+nxt=0
 
 csvpath = os.path.join('Resources', 'budget_data.csv')
 
@@ -26,11 +28,14 @@ with open(csvpath) as csvfile:
     print(total)
     print(New_List)
     for i in New_List:
-        prev=New_List[0]
+        index=1
         curr=New_List[1]
+        nxt=New_List[2]    
         if i<len(New_List):
-            diff += float(curr - prev)
+            diff = float(nxt - curr)
+            print(diff)
             Change.append(diff)
-            prev = curr
-            curr = i
-    print(Change)
+            index=index+1
+            curr = nxt
+            nxt = New_List[index]
+    
